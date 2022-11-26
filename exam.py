@@ -74,7 +74,7 @@ for i in range(n):
         # print(i)
         sum = s
         count = 1
-        for j in range(i+1,22):
+        for j in range(i+1,n):
             if new_df[i][1] == new_df[j][1]:
                 if new_df[j][2] == "-":
                     count += 1
