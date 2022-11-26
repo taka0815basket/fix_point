@@ -76,33 +76,30 @@ for i in range(n):
         count = 1
         for j in range(i+1,n):
             if new_df[i][1] == new_df[j][1]:
-                if new_df[j][2] == "-":
+                if new_df[j][2] != "-":
+                    s = int(new_df[j][2])
+                    sum += s
                     count += 1
-                    break
-                
-                s = int(new_df[j][2])
-                sum += s
-                count += 1
-                if count >= m:
-                    average = sum / m
-                    count = 0
-                    if average >= t:
-                        d1 = str(new_df[i][0])
-                        d2 = str(new_df[j][0])
-                        dt1 = datetime.datetime.strptime(d1, '%Y%m%d%H%M%S')
-                        dt2 = datetime.datetime.strptime(d2, '%Y%m%d%H%M%S')
-                        print("サーバーアドレス：{}" .format(new_df[i][1]))
-                        print("{} ~ {}" .format(dt1,dt2))
-                        print("過負荷状態です。")
-                    else:
-                        d1 = str(new_df[i][0])
-                        d2 = str(new_df[j][0])
-                        dt1 = datetime.datetime.strptime(d1, '%Y%m%d%H%M%S')
-                        dt2 = datetime.datetime.strptime(d2, '%Y%m%d%H%M%S')
-                        print("サーバーアドレス：{}" .format(new_df[i][1]))
-                        print("{} ~ {}" .format(dt1,dt2))
-                        print("過負荷状態ではありません。")
-                        
+                    if count >= m:
+                        average = sum / m
+                        count = 1
+                        if average >= t:
+                            d1 = str(new_df[i][0])
+                            d2 = str(new_df[j][0])
+                            dt1 = datetime.datetime.strptime(d1, '%Y%m%d%H%M%S')
+                            dt2 = datetime.datetime.strptime(d2, '%Y%m%d%H%M%S')
+                            print("サーバーアドレス：{}" .format(new_df[i][1]))
+                            print("{} ~ {}" .format(dt1,dt2))
+                            print("過負荷状態です。")
+                        else:
+                            d1 = str(new_df[i][0])
+                            d2 = str(new_df[j][0])
+                            dt1 = datetime.datetime.strptime(d1, '%Y%m%d%H%M%S')
+                            dt2 = datetime.datetime.strptime(d2, '%Y%m%d%H%M%S')
+                            print("サーバーアドレス：{}" .format(new_df[i][1]))
+                            print("{} ~ {}" .format(dt1,dt2))
+                            print("過負荷状態ではありません。")
+                            
 print()                   
 # 設問４
 for i in range(n):
